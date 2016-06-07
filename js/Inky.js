@@ -1,0 +1,1 @@
+var Inky = new Sprite();

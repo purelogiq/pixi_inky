@@ -33,12 +33,14 @@ function run() {
   }
 
 
+  var enableLog = false;
   var numFrames = 0;
   var totalSeconds = 0;
   var lastTime = 0;
   var now, frameTime;
 
   function logPerformance() {
+    if(!enableLog) return;
     numFrames += 1;
     now = performance.now();
     frameTime = (now - lastTime) / MILLISECONDS_TO_SECONDS;
@@ -53,6 +55,5 @@ function run() {
       console.log('-----------------------');
     }
   }
-
   animate();
 }
