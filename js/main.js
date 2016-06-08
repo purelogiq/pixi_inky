@@ -1,4 +1,5 @@
 TextureStash.init(run);
+
 function run() {
   var MILLISECONDS_TO_SECONDS = 1000;
   var WORLD_WIDTH = 1280;
@@ -6,8 +7,10 @@ function run() {
   var ASPECT_RATIO = WORLD_WIDTH / WORLD_HEIGHT;
 
   var renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight, {autoResize: true});
+  var interface = new INKY.Interface();
 
-  document.body.appendChild(renderer.view);
+  renderer.view.className = 'inky-canvas';
+  INKY.rootElement.appendChild(renderer.view);
 
   var stage = new PIXI.Container();
   var face = new PIXI.Sprite(TextureStash.assets('assets/face.png'));
