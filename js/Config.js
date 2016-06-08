@@ -1,5 +1,5 @@
 var INKY = {
-    rootElement: document.getElementById('inky-root'),
+    ROOT_ELEMENT: document.getElementById('inky-root'),
     WORLD_WIDTH: 1000,
     WORLD_HEIGHT: 1000,
     GENDERS: ['m', 'f'],

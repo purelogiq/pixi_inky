@@ -1,11 +1,11 @@
 body {
+  background-color: cyan;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .inky-root {
-  display: flex;
   height: 100%;
   left: 0;
   position: absolute;
@@ -15,11 +15,19 @@ body {
 
 .inky-root .inky-interface {
   background-color: #ffaa00;
-  flex: 0.3125 0 auto;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 31.25%;
 }
 
 .inky-root .inky-canvas {
-  flex: 1 1 auto;
+  height: 100%;
+  left: 31.25%;
+  position: absolute;
+  top: 0;
+  width: 68.75%;
 }
 
 .inky-root .inky-canvas canvas {

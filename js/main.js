@@ -4,29 +4,33 @@ function run() {
   var MILLISECONDS_TO_SECONDS = 1000;
   var WORLD_WIDTH = 1024;
   var WORLD_HEIGHT = 1024;
-  var ASPECT_RATIO = WORLD_WIDTH / WORLD_HEIGHT;
 
   var interface = new INKY.Interface();
 
   var canvasContainer = document.createElement('div');
   canvasContainer.className = 'inky-canvas';
-  INKY.rootElement.appendChild(canvasContainer);
 
-  var renderer = new PIXI.WebGLRenderer(canvasContainer.width, canvasContainer.height, {autoResize: true});
+  INKY.ROOT_ELEMENT.appendChild(interface.element);
+  INKY.ROOT_ELEMENT.appendChild(canvasContainer);
+
+  var initialCanvasRect = canvasContainer.getBoundingClientRect();
+  var renderer = new PIXI.WebGLRenderer(initialCanvasRect.width, initialCanvasRect.height, {autoResize: true});
   canvasContainer.appendChild(renderer.view);
 
   var stage = new PIXI.Container();
   var face = new PIXI.Sprite(TextureStash.assets('assets/face.png'));
   face.anchor.x = 0.5;
   face.anchor.y = 0.5;
-  face.position.x = 1280 / 2;
-  face.position.y = 720 / 2;
+  face.position.x = 500 / 2;
+  face.position.y = 500 / 2;
   stage.addChild(face);
 
   window.onresize = function () {
-    var resizedWidth = canvasContainer.height * ASPECT_RATIO;
-    var scaling = canvasContainer.height / WORLD_HEIGHT;
-    renderer.resize(resizedWidth, canvasContainer.height);
+    var canvasRect = canvasContainer.getBoundingClientRect();
+    var smallestSideProp = canvasRect.height < canvasRect.width ? 'height' : 'width';
+    var scaling = canvasRect[smallestSideProp] / initialCanvasRect[smallestSideProp];
+    renderer.resize(canvasRect.width, canvasRect.height);
+    console.log(scaling);
     stage.scale.x = scaling;
     stage.scale.y = scaling;
   };

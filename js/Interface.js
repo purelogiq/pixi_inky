@@ -10,6 +10,5 @@ INKY.Interface.prototype = {
     this.title = document.createElement('h2');
     this.title.textContent = 'Screen Printing Station';
     this.element.appendChild(this.title);
-    INKY.rootElement.appendChild(this.element);
   }
 };
