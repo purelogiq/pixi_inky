@@ -6,9 +6,29 @@ INKY.Interface = function (config) {
 
 INKY.Interface.prototype = {
   init: function () {
-    this.element.className = 'inky-interface';
-    this.title = document.createElement('h2');
-    this.title.textContent = 'Screen Printing Station';
-    this.element.appendChild(this.title);
+    var element = this.element;
+    element.className = 'inky-interface';
+
+    this.rackStation = new INKY.Rack();
+    this.stations = [this.rackStation];
+
+    this.stations.forEach(function (station) {
+      station.element.className += ' inky-interface--station';
+      element.appendChild(station.element);
+    });
+  },
+
+  activate: function (stationName) {
+    this.stations.forEach(function (station) {
+      station.element.className.replace(/\s?active/, '');
+    });
+
+    switch(stationName) {
+      case 'rack':
+        this.rackStation.activate();
+        break;
+      default:
+        this.stations[0].className += 'active';
+    }
   }
 };

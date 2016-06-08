@@ -1,5 +1,5 @@
 body {
-  background-color: cyan;
+  background-color: black;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   width: 100%;
 }
 
-.inky-root .inky-interface {
+.inky-interface {
   background-color: #ffaa00;
   height: 100%;
   left: 0;
@@ -22,7 +22,7 @@ body {
   width: 31.25%;
 }
 
-.inky-root .inky-canvas {
+.inky-canvas {
   height: 100%;
   left: 31.25%;
   position: absolute;
@@ -30,6 +30,18 @@ body {
   width: 68.75%;
 }
 
-.inky-root .inky-canvas canvas {
+.inky-canvas canvas {
   margin: auto;
+}
+
+.inky-interface--station {
+  display: none;
+}
+
+.inky-interface--station.active {
+  display: block;
+}
+
+.inky-interface--rack {
+
 }

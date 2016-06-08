@@ -4,6 +4,8 @@ function run() {
   var world = new INKY.World();
   var ui = new INKY.Interface();
 
+  ui.activate('rack');
+
   var canvasContainer = document.createElement('div');
   canvasContainer.className = 'inky-canvas';
 
