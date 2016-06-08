@@ -1,7 +1,9 @@
 var INKY = {
     ROOT_ELEMENT: document.getElementById('inky-root'),
-    WORLD_WIDTH: 1000,
-    WORLD_HEIGHT: 1000,
+    MILLISECONDS_TO_SECONDS: 1000,
+    WORLD_WIDTH: 960,
+    WORLD_HEIGHT: 720,
+    ASPECT_RATIO: 4/3,
     GENDERS: ['m', 'f'],
     SIZES: ['S', 'M', 'L'],
     NUM_EYES: 5,

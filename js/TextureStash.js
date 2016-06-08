@@ -6,6 +6,7 @@ var TextureStash = new function(){
   this.init = function(setupCallback, loadProgressHandler){
     PIXI.loader
         .add("assets/face.png")
+        .add("assets/inky.png")
         .add("assets/people_graphics.json")
         .add("assets/platform_graphics.json")
         .on("progress", loadProgressHandler)
@@ -19,7 +20,7 @@ var TextureStash = new function(){
 
   this.assets = function(textureId){
     checkInitialized();
-    return PIXI.loader.resources[textureId].texture;
+    return PIXI.loader.resources["assets/" + textureId].texture;
   };
 
   this.people = function(textureId){
