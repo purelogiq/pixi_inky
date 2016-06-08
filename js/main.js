@@ -30,7 +30,6 @@ function run() {
     var smallestSideProp = canvasRect.height < canvasRect.width ? 'height' : 'width';
     var scaling = canvasRect[smallestSideProp] / initialCanvasRect[smallestSideProp];
     renderer.resize(canvasRect.width, canvasRect.height);
-    console.log(scaling);
     stage.scale.x = scaling;
     stage.scale.y = scaling;
   };
