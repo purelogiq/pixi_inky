@@ -38,8 +38,13 @@ function run() {
     world.container.scale.y = scaling;
   };
 
+  var lastTime = 0;
   function animate(){
     requestAnimationFrame(animate);
+    var now = performance.now();
+    var deltaTime = (now - lastTime) / INKY.MILLISECONDS_TO_SECONDS;
+    lastTime = now;
+    world.update(deltaTime);
     renderer.render(world.container);
   }
 
