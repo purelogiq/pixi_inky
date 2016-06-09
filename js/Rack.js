@@ -113,6 +113,13 @@
       };
 
       this.shirt.update();
+    },
+    wire: function () {
+      var onSubmit = this.onSubmit;
+      var props = this.props;
+      this.grabButton.addEventListener('click', function () {
+        onSubmit(props);
+      });
     }
   };
 }());

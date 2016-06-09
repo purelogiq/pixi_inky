@@ -87,7 +87,11 @@
       }
     },
     wire: function () {
-      this.printButton.addEventListener('click', this.onSubmit);
+      var onSubmit = this.onSubmit;
+      var props = this.props;
+      this.printButton.addEventListener('click', function () {
+        onSubmit(props);
+      });
     }
   };
 }());
