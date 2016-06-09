@@ -2,7 +2,6 @@
   INKY.World = function () {
     var world = new PIXI.Container();
     var inky = null;
-    var background = new INKY.Background();
     var shirtRack = null;
     var printer = null;
     var inkyDestination = null;
@@ -12,10 +11,10 @@
     world.width = INKY.WORLD_WIDTH;
     world.height = INKY.WORLD_HEIGHT;
     this.container = world;
-    this.container.addChild(background);
 
     this.update = function (deltaTime) {
-      background.update(deltaTime);
+      printer.update(deltaTime);
+      shirtRack.update(deltaTime);
       animateInky(deltaTime);
       if (inkyDestination) moveInky(deltaTime);
       customers.forEach(function (customer) {
@@ -31,11 +30,12 @@
     }
 
     function createBackground() {
-
+      var background = new INKY.Background();
+      world.addChild(background);
     }
 
     function createStations() {
-      shirtRack = new INKY.Station('face.png', 150, 200);
+      shirtRack = new INKY.Station('face.png', 100, 215);
       printer = new INKY.Station('face.png', INKY.WORLD_WIDTH, INKY.WORLD_HEIGHT);
 
       world.addChild(shirtRack);

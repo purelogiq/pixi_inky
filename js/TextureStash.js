@@ -12,6 +12,7 @@
         .add("assets/inky.png")
         .add("assets/star.png")
         .add("assets/tree.png")
+        .add("assets/tiled_ceiling.png")
         .add("assets/people_graphics.json")
         .add("assets/platform_graphics.json")
         .on("progress", loadProgressHandler)

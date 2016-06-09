@@ -83,4 +83,4 @@
       this.container.y = this.offset.y;
     }
   };
-}())
+}());
