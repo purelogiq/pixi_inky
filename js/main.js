@@ -1,4 +1,4 @@
-TextureStash.init(run);
+INKY.TextureStash.init(run);
 
 function run() {
   var world = new INKY.World();

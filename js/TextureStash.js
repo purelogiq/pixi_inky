@@ -1,10 +1,11 @@
-var TextureStash = new function(){
-  'use strict';
+(function () {
+  INKY.TextureStash = new function(){
+    'use strict';
 
-  var isInitialized = false;
+    var isInitialized = false;
 
-  this.init = function(setupCallback, loadProgressHandler){
-    PIXI.loader
+    this.init = function(setupCallback, loadProgressHandler){
+      PIXI.loader
         .add("assets/cat.png")
         .add("assets/face.png")
         .add("assets/football.png")
@@ -20,29 +21,30 @@ var TextureStash = new function(){
             setupCallback();
           }
         );
-  };
+    };
 
-  this.assets = function(textureId){
-    checkInitialized();
-    return PIXI.loader.resources["assets/" + textureId].texture;
-  };
+    this.assets = function(textureId){
+      checkInitialized();
+      return PIXI.loader.resources["assets/" + textureId].texture;
+    };
 
-  this.people = function(textureId){
-    return fromAtlas("assets/people_graphics.json", "people/" + textureId);
-  };
+    this.people = function(textureId){
+      return fromAtlas("assets/people_graphics.json", "people/" + textureId);
+    };
 
-  this.platform = function(textureId){
-    return fromAtlas("assets/platform_graphics.json", textureId);
-  };
+    this.platform = function(textureId){
+      return fromAtlas("assets/platform_graphics.json", textureId);
+    };
 
-  var checkInitialized = function(){
-    if(!isInitialized){
-      throw "Assets are not yet loaded";
+    var checkInitialized = function(){
+      if(!isInitialized){
+        throw "Assets are not yet loaded";
+      }
+    };
+
+    var fromAtlas = function(atlas, textureId){
+      checkInitialized();
+      return PIXI.loader.resources[atlas].textures[textureId];
     }
   };
-
-  var fromAtlas = function(atlas, textureId){
-    checkInitialized();
-    return PIXI.loader.resources[atlas].textures[textureId];
-  }
-};
+})();

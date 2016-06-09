@@ -34,9 +34,9 @@
       this.children.forEach(function (child) {
         container.removeChild(child);
       });
-      this.torso = new PIXI.Sprite(TextureStash.people(`shirts/${this.color}/${this.style}`));
-      this.rightArm = new PIXI.Sprite(TextureStash.people(`shirts/${this.color}/arm`));
-      this.leftArm = new PIXI.Sprite(TextureStash.people(`shirts/${this.color}/arm`));
+      this.torso = new PIXI.Sprite(INKY.TextureStash.people(`shirts/${this.color}/${this.style}`));
+      this.rightArm = new PIXI.Sprite(INKY.TextureStash.people(`shirts/${this.color}/arm`));
+      this.leftArm = new PIXI.Sprite(INKY.TextureStash.people(`shirts/${this.color}/arm`));
       this.leftArm.scale = {
         x: -1,
         y: 1
@@ -44,7 +44,7 @@
       this.children = [this.torso, this.rightArm, this.leftArm];
 
       if (this.designId) {
-        this.design = new PIXI.Sprite(TextureStash.assets(`${this.designId}.png`));
+        this.design = new PIXI.Sprite(INKY.TextureStash.assets(`${this.designId}.png`));
         this.children.push(this.design);
       }
 

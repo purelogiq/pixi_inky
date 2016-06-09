@@ -75,7 +75,7 @@
     update: function () {
       var designId = INKY.SHIRT_DESIGNS[this.props.design];
       this.stage.removeChild(this.design);
-      this.design = new PIXI.Sprite(TextureStash.assets(`${designId}.png`));
+      this.design = new PIXI.Sprite(INKY.TextureStash.assets(`${designId}.png`));
       this.stage.addChild(this.design);
       var designScale = getDesignScale(
         this.design.getBounds(),
