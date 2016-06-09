@@ -22,8 +22,5 @@
       sprite.x = x - sprite.width / 2;
       sprite.y = y - sprite.height / 2;
     }
-
-
-
   };
-});
+}());

@@ -16,7 +16,10 @@
     this.scale = config.scale || 1;
     this.offset = config.offset || {x: 0, y: 0};
 
-    this.container = new PIXI.Container();
+    this.container = new PIXI.Sprite();
+    this.container.anchor.x = 0.5;
+    this.container.anchor.y = 0.5;
+
     this.children = [];
     this.update();
   };
@@ -48,20 +51,26 @@
         this.children.push(this.design);
       }
 
+      this.children.forEach(function (child) {
+        child.anchor.x = 0.5;
+        child.anchor.y = 0.5;
+      });
+
       this.render();
     },
     render: function () {
       var container = this.container;
-      var armOverlap = getArmOverlap(this.style);
+      var armOverlap = getArmOverlap(this.style) / 2;
       var sizeMap = {
         S: 0.5,
         M: 0.75,
         L: 1
       };
 
-      this.leftArm.x = this.leftArm._texture.width;
-      this.torso.x = this.leftArm._texture.width - armOverlap;
-      this.rightArm.x = this.leftArm._texture.width + this.torso._texture.width - 2 * armOverlap;
+      this.leftArm.x = -1 * (this.leftArm._texture.width - armOverlap);
+      this.leftArm.y = (this.leftArm._texture.height / 2) - (this.torso._texture.height / 2);
+      this.rightArm.x = this.rightArm._texture.width - armOverlap;
+      this.rightArm.y = (this.rightArm._texture.height / 2) - (this.torso._texture.height / 2);
 
       this.children.forEach(function (child) {
         container.addChild(child);
@@ -70,6 +79,8 @@
         x: this.scale * sizeMap[this.size],
         y: this.scale * sizeMap[this.size],
       };
+      this.container.x = this.offset.x;
+      this.container.y = this.offset.y;
     }
   };
 }())

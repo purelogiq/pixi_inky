@@ -18,7 +18,7 @@
       console.log(e);
     }).bind(this));
   };
-  
+
   INKY.Station.prototype = Object.create(PIXI.Sprite.prototype);
   INKY.Station.prototype.constructor = INKY.Station;
 
@@ -38,4 +38,4 @@
       if(this.scale.x < 0.95) pulseOut = true;
     }
   };
-});
+}());

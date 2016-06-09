@@ -46,7 +46,7 @@ function run() {
   window.addEventListener('resize', scaleToFit);
 
   INKY.ui = ui;
-  ui.activate('printer');
+  ui.activate('rack');
 
   var lastTime = 0;
   function animate(){

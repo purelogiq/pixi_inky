@@ -101,14 +101,16 @@
       this.update();
     },
     update: function () {
+      var previewRect = this.preview.getBoundingClientRect();
+
       this.shirt.style = INKY.GENDERS[this.props.style];
       this.shirt.color = INKY.SHIRT_COLORS[this.props.color];
       this.shirt.size = INKY.SIZES[this.props.size];
 
-      this.shirt.offset = getCenteredShirt(
-        this.shirt.getNativeSize(),
-        this.preview.getBoundingClientRect()
-      );
+      this.shirt.offset = {
+        x: previewRect.width / 2,
+        y: previewRect.height / 2
+      };
 
       this.shirt.update();
     }

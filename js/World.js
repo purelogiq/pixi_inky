@@ -7,6 +7,7 @@
     var printer = null;
     var inkyDestination = null;
     var inkySpeed = 300; // 300px per second
+    var customers = [];
 
     world.width = INKY.WORLD_WIDTH;
     world.height = INKY.WORLD_HEIGHT;
@@ -17,12 +18,16 @@
       background.update(deltaTime);
       animateInky(deltaTime);
       if (inkyDestination) moveInky(deltaTime);
+      customers.forEach(function (customer) {
+        customer.update(deltaTime);
+      })
     };
 
     function init() {
       createBackground();
       createStations();
       createInky();
+      createCustomer();
     }
 
     function createBackground() {
@@ -83,6 +88,18 @@
       }
     }
 
+    function createCustomer() {
+      var customer = new INKY.Person();
+
+      customer.x = INKY.WORLD_WIDTH * 0.75;
+      customer.y = INKY.WORLD_HEIGHT * 0.5;
+      customer.anchor = {x: 0.5, y: 0.5};
+      customer.scale = {x: 0.65, y: 0.65};
+      world.addChild(customer);
+
+      customers.push(customer);
+    }
+
     init();
   };
-});
+}());
