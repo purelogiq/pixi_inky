@@ -18,6 +18,7 @@
   INKY.Selector = function (config) {
     config = config || {};
     this.element = document.createElement('div');
+    this.element.className = 'inky-interface--selector';
     this.onChange = config.onChange || function () {};
     this.collection = config.collection || [];
     this.selected = 'undefined' !== typeof config.selected ? config.selected : 0;

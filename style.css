@@ -1,33 +1,50 @@
 body {
-  background-color: black;
+  background-color: orange;
   font-family: sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.inky-root {
-  height: 100%;
-  left: 0;
   position: absolute;
-  top: 0;
   width: 100%;
 }
 
+.inky-root {
+  border: 8px solid gold;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+  margin: 5% auto;
+  padding: 0;
+  position: relative;
+}
+
 .inky-interface {
-  background-color: #ffaa00;
+  background-color: rgb(80, 120, 130);
+  border-right: 8px solid gold;
+  color: gold;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
-  width: 31.25%;
+  width: 33.33%;
+  z-index: 100;
+}
+
+.inky-interface button {
+  border: none;
+  border-radius: 0.25em;
+  background: white;
+  color: gold;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin: 1em;
+  padding: 0.5em;
 }
 
 .inky-canvas {
   height: 100%;
-  left: 31.25%;
+  left: 33.33%;
   position: absolute;
   top: 0;
-  width: 68.75%;
+  width: 66.66%;
 }
 
 .inky-canvas canvas {
@@ -44,4 +61,35 @@ body {
 
 .inky-interface--rack {
   text-align: center;
+}
+
+.inky-interface--selector {
+  align-items: baseline;
+  border: 0 solid gold;
+  border-top-width: 2px;
+  display: flex;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+.inky-interface--selector:last-of-type {
+  border-bottom-width: 2px;
+}
+.inky-interface--selector span {
+  flex: 1 1 auto;
+}
+.inky-interface--selector button {
+  background: transparent;
+  border: none;
+  color: gold;
+  flex: 0 0 auto;
+  font-size: 1.25em;
+  margin: 0 0.5em;
+  padding: 0;
+  top: 0;
+}
+
+.inky-interface button.inky-interface--primary-button {
+  background: gold;
+  color: teal;
 }

@@ -7,8 +7,8 @@
 
   function getCenteredShirt(shirtRect, previewRect) {
     return {
-      x: (previewRect.width - shirtRect.width) / 2,
-      y: (previewRect.height - shirtRect.height) / 2
+      x: (shirtRect.width - previewRect.width) / 2,
+      y: (shirtRect.height - previewRect.height) / 2
     };
   }
 
@@ -50,6 +50,7 @@
     });
 
     this.grabButton = document.createElement('button');
+    this.grabButton.className = 'inky-interface--primary-button';
   };
 
   INKY.Rack.prototype = {
@@ -60,22 +61,20 @@
         boundingRect.width * 0.9,
         boundingRect.width * 0.6,
         {
+          transparent: true,
           view: this.preview
         }
       );
-
       var stage = this.stage = new PIXI.Container();
       stage.addChild(this.shirt.container);
 
-      var shirtOffset = getCenteredShirt(this.shirt.container.getBounds(), pixi);
-      this.shirt.x = shirtOffset.x;
-      this.shirt.y = shirtOffset.y;
-      this.shirt.scale = getShirtScale(
-        this.shirt.container.getBounds(),
+      var shirtScale = getShirtScale(
+        this.shirt.getNativeSize(),
         this.preview.getBoundingClientRect()
       );
-      this.shirt.render();
+      this.shirt.scale = shirtScale;
 
+      this.render();
       function animate(){
         requestAnimationFrame(animate);
         pixi.render(stage);
@@ -103,6 +102,12 @@
       this.shirt.style = INKY.GENDERS[this.props.style];
       this.shirt.color = INKY.SHIRT_COLORS[this.props.color];
       this.shirt.size = INKY.SIZES[this.props.size];
+
+      this.shirt.offset = getCenteredShirt(
+        this.shirt.getNativeSize(),
+        this.preview.getBoundingClientRect()
+      );
+
       this.shirt.update();
     }
   };

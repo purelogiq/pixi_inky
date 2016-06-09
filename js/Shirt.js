@@ -13,13 +13,21 @@
     this.style = config.style || INKY.GENDERS[0];
     this.size = config.size || INKY.SIZES[1];
     this.scale = config.scale || 1;
+    this.offset = config.offset || {x: 0, y: 0};
 
     this.container = new PIXI.Container();
-    this.children = [this.torso, this.rightArm, this.leftArm];
+    this.children = [];
     this.update();
   };
 
   INKY.Shirt.prototype = {
+    getNativeSize: function () {
+      var armOverlap = getArmOverlap(this.style);
+      return {
+        width: (2 * this.leftArm._texture.width) + this.torso._texture.width - (2 * armOverlap),
+        height: this.torso._texture.height
+      };
+    },
     update: function () {
       var container = this.container;
       this.children.forEach(function (child) {
@@ -51,6 +59,8 @@
       this.children.forEach(function (child) {
         container.addChild(child);
       });
+      this.container.x = this.offset.x / sizeMap[this.size];
+      this.container.y = this.offset.y / sizeMap[this.size];
       this.container.scale = {
         x: this.scale * sizeMap[this.size],
         y: this.scale * sizeMap[this.size],
