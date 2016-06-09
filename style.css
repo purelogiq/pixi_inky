@@ -24,7 +24,7 @@ body {
   left: 0;
   position: absolute;
   top: 0;
-  width: 33.33%;
+  width: 25%;
   z-index: 100;
 }
 
@@ -41,10 +41,10 @@ body {
 
 .inky-canvas {
   height: 100%;
-  left: 33.33%;
+  left: 25%;
   position: absolute;
   top: 0;
-  width: 66.66%;
+  width: 75%;
 }
 
 .inky-canvas canvas {

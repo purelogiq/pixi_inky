@@ -3,7 +3,7 @@ var INKY = {
     MILLISECONDS_TO_SECONDS: 1000,
     WORLD_WIDTH: 960,
     WORLD_HEIGHT: 1200,
-    ASPECT_RATIO: 2/2.5,
+    ASPECT_RATIO: 3/2.5,
     UI_ASPECT_RATIO: 1/2.5,
     GENDERS: ['m', 'f'],
     SIZES: ['S', 'M', 'L'],
