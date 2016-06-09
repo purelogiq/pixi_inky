@@ -5,11 +5,6 @@ function run() {
   var ui = new INKY.Interface();
   var canvasContainer = document.createElement('div');
   var renderer = new PIXI.autoDetectRenderer(INKY.WORLD_WIDTH, INKY.WORLD_HEIGHT);
-<<<<<<< fd753ab5be1b7d7bd44c3158041624aa01db7976
-=======
-  var resizeTimeout;
-  var resizeIsDebouncing;
->>>>>>> Set up printer station
 
   function scaleToFit () {
     var rootElement = INKY.ROOT_ELEMENT;
