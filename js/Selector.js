@@ -37,11 +37,11 @@
     },
     render: function () {
       this.label = document.createElement('span');
-      this.label.innerText = this.title;
+      this.label.textContent = this.title;
       this.previousButton = document.createElement('button');
-      this.previousButton.innerText = '<';
+      this.previousButton.textContent = '<';
       this.nextButton = document.createElement('button');
-      this.nextButton.innerText = '>';
+      this.nextButton.textContent = '>';
       this.element.appendChild(this.previousButton);
       this.element.appendChild(this.label);
       this.element.appendChild(this.nextButton);

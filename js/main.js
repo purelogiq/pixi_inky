@@ -4,8 +4,6 @@ function run() {
   var world = new INKY.World();
   var ui = new INKY.Interface();
 
-  ui.activate('rack');
-
   var canvasContainer = document.createElement('div');
   canvasContainer.className = 'inky-canvas';
 
@@ -13,8 +11,10 @@ function run() {
   INKY.ROOT_ELEMENT.appendChild(canvasContainer);
 
   var initialCanvasRect = canvasContainer.getBoundingClientRect();
-  var renderer = new PIXI.WebGLRenderer(initialCanvasRect.width, initialCanvasRect.height);
+  var renderer = new PIXI.autoDetectRenderer(initialCanvasRect.width, initialCanvasRect.height);
   canvasContainer.appendChild(renderer.view);
+
+  ui.activate('rack');
 
   window.onresize = function(){
     canvasRect = canvasContainer.getBoundingClientRect();

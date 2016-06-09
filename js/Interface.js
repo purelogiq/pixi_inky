@@ -25,6 +25,7 @@ INKY.Interface.prototype = {
 
     switch(stationName) {
       case 'rack':
+        this.rackStation.render();
         this.rackStation.activate();
         break;
       default:
