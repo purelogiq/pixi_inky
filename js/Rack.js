@@ -89,8 +89,8 @@
       this.element.appendChild(this.colorSelector.element);
       this.element.appendChild(this.grabButton);
 
-      this.title.textContent = 'Clothing Rack';
-      this.grabButton.textContent = 'Grab That Shirt!';
+      this.title.textContent = 'T-Shirt Rack';
+      this.grabButton.textContent = 'Grab It!';
 
       this.update();
     },
