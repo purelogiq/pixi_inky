@@ -1,8 +1,8 @@
 var INKY = {
     ROOT_ELEMENT: document.getElementById('inky-root'),
     MILLISECONDS_TO_SECONDS: 1000,
-    WORLD_WIDTH: 960,
-    WORLD_HEIGHT: 1200,
+    WORLD_WIDTH: 1200,
+    WORLD_HEIGHT: 1000,
     ASPECT_RATIO: 3/2.5,
     UI_ASPECT_RATIO: 1/2.5,
     GENDERS: ['m', 'f'],

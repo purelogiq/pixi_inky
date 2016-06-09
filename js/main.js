@@ -5,14 +5,13 @@ function run() {
   var ui = new INKY.Interface();
   var canvasContainer = document.createElement('div');
   var renderer = new PIXI.autoDetectRenderer(INKY.WORLD_WIDTH, INKY.WORLD_HEIGHT);
-  var resizeTimeout;
 
   function scaleToFit () {
     var rootElement = INKY.ROOT_ELEMENT;
     var bodyRect = document.body.getBoundingClientRect();
     var canvasRect = canvasContainer.getBoundingClientRect();
     var combinedAspect = INKY.ASPECT_RATIO + INKY.UI_ASPECT_RATIO;
-    var scale;
+    var scaling;
 
     bodyRect = {
       height: bodyRect.height * 0.9,
@@ -44,10 +43,7 @@ function run() {
   canvasContainer.appendChild(renderer.view);
   scaleToFit();
   scaleToFit();
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(scaleToFit, 50);
-  });
+  window.addEventListener('resize', scaleToFit);
 
   ui.activate('rack');
 
