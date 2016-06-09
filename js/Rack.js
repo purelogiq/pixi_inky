@@ -77,6 +77,8 @@
       this.shirt.scale = shirtScale;
 
       this.render();
+      this.wire();
+
       function animate(){
         requestAnimationFrame(animate);
         pixi.render(stage);

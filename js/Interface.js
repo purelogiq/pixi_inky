@@ -2,16 +2,16 @@
   INKY.Interface = function (config) {
     config = config || {};
     this.element = config.element || document.createElement('div');
-    this.init();
+    this.init(config['rackHandler'], config['printerHandler']);
   };
 
   INKY.Interface.prototype = {
-    init: function () {
+    init: function (rackHandler, printerHandler) {
       var element = this.element;
       element.className = 'inky-interface';
 
-      this.rackStation = new INKY.Rack();
-      this.printerStation = new INKY.Printer();
+      this.rackStation = new INKY.Rack({onSubmit: rackHandler});
+      this.printerStation = new INKY.Printer({onSubmit: printerHandler});
       this.stations = [this.rackStation, this.printerStation];
 
       this.stations.forEach(function (station) {

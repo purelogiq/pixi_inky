@@ -2,7 +2,8 @@ INKY.TextureStash.init(run);
 
 function run() {
   var world = new INKY.World();
-  var ui = new INKY.Interface();
+  var config = {rackHandler: world.rackHandler, printerHandler: world.printerHandler};
+  var ui = new INKY.Interface(config);
   var canvasContainer = document.createElement('div');
   var renderer = new PIXI.autoDetectRenderer(INKY.WORLD_WIDTH, INKY.WORLD_HEIGHT);
 

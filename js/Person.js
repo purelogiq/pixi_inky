@@ -14,7 +14,7 @@
     };
 
     this.anchor = centeredAnchor;
-
+    this.interactive = true;
     this.createNeck();
     this.createArms();
     this.createPants();
