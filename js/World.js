@@ -92,9 +92,9 @@
       var customer = new INKY.Person();
 
       customer.x = INKY.WORLD_WIDTH * 0.75;
-      customer.y = INKY.WORLD_HEIGHT * 0.5;
+      customer.y = INKY.WORLD_HEIGHT -140;
       customer.anchor = {x: 0.5, y: 0.5};
-      customer.scale = {x: 0.65, y: 0.65};
+      customer.scale = {x: 0.5, y: 0.5};
       world.addChild(customer);
 
       customers.push(customer);

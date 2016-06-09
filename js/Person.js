@@ -17,10 +17,10 @@
 
     this.createNeck();
     this.createArms();
-    this.createShoes();
     this.createPants();
     this.createShirt();
     this.createHead();
+    this.createThought();
   };
 
   INKY.Person.prototype = Object.create(PIXI.Sprite.prototype, {
@@ -207,9 +207,12 @@
         this.addChild(shirt.container);
       }
     },
-    createShoes: {
+    createThought: {
       value: function () {
-
+        var thought = new INKY.Thought();
+        thought.x = -200;
+        thought.y = -700;
+        this.addChild(thought);
       }
     },
     update: {

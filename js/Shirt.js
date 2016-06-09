@@ -7,6 +7,12 @@
     return styleMap[style] || styleMap.m;
   }
 
+  function getDesignScale(designRect, previewRect) {
+    var horizontalRatio = 0.75 * previewRect.width / designRect.width;
+    var verticalRatio = 0.75 * previewRect.height / designRect.height;
+    return Math.min(horizontalRatio, verticalRatio);
+  }
+
   INKY.Shirt = function (config) {
     config = config || {};
     this.color = config.color || INKY.SHIRT_COLORS[0];
@@ -48,6 +54,14 @@
 
       if (this.designId) {
         this.design = new PIXI.Sprite(INKY.TextureStash.assets(`${this.designId}.png`));
+        var designScale = getDesignScale(
+          this.design.getBounds(),
+          this.torso.getBounds()
+        );
+        this.design.scale = {
+          x: designScale,
+          y: designScale
+        };
         this.children.push(this.design);
       }
 
@@ -75,6 +89,7 @@
       this.children.forEach(function (child) {
         container.addChild(child);
       });
+
       this.container.scale = {
         x: this.scale * sizeMap[this.size],
         y: this.scale * sizeMap[this.size],
