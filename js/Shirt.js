@@ -12,6 +12,7 @@
     this.color = config.color || INKY.SHIRT_COLORS[0];
     this.style = config.style || INKY.GENDERS[0];
     this.size = config.size || INKY.SIZES[1];
+    this.designId = config.designId || '';
     this.scale = config.scale || 1;
     this.offset = config.offset || {x: 0, y: 0};
 
@@ -41,6 +42,12 @@
         y: 1
       };
       this.children = [this.torso, this.rightArm, this.leftArm];
+
+      if (this.designId) {
+        this.design = new PIXI.Sprite(TextureStash.assets(`${this.designId}.png`));
+        this.children.push(this.design);
+      }
+
       this.render();
     },
     render: function () {
@@ -59,8 +66,6 @@
       this.children.forEach(function (child) {
         container.addChild(child);
       });
-      this.container.x = this.offset.x / sizeMap[this.size];
-      this.container.y = this.offset.y / sizeMap[this.size];
       this.container.scale = {
         x: this.scale * sizeMap[this.size],
         y: this.scale * sizeMap[this.size],

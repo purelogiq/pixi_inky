@@ -14,5 +14,5 @@ var INKY = {
     HAIR_COLORS: ['black', 'brown', 'blonde', 'grey', 'red'],
     PANT_COLORS: ['blue', 'brown', 'green', 'navy', 'tan'],
     SHIRT_COLORS: ['blue', 'green', 'grey', 'navy', 'pine', 'red', 'white', 'yellow'],
-    SHIRT_DESIGNS: []
+    SHIRT_DESIGNS: ['cat', 'football', 'star', 'tree']
 };

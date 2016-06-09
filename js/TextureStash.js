@@ -5,8 +5,12 @@ var TextureStash = new function(){
 
   this.init = function(setupCallback, loadProgressHandler){
     PIXI.loader
+        .add("assets/cat.png")
         .add("assets/face.png")
+        .add("assets/football.png")
         .add("assets/inky.png")
+        .add("assets/star.png")
+        .add("assets/tree.png")
         .add("assets/people_graphics.json")
         .add("assets/platform_graphics.json")
         .on("progress", loadProgressHandler)

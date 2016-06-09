@@ -21,6 +21,8 @@
       color: 0
     };
 
+    this.onSubmit = config.onSubmit || function () {};
+
     this.element = config.element || document.createElement('div');
     this.element.className = 'inky-interface--rack';
 
