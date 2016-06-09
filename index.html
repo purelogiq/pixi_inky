@@ -3,24 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Inky Game</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="js/lib/jquery-2.2.4.min.js"></script>
-    <script src="js/lib/underscore.js"></script>
-    <script src="js/lib/pixi.js"></script>
-    <script src="js/lib/howler.js"></script>
+    <script src="pixi.js"></script>
 </head>
 <body style="text-align: center">
-    <section id="inky-root" class="inky-root"></section>
+    <script>
+        PIXI.loader
+            .add("inky.png")
+            .add("background.png")
+            .load(run);
 
-    <script src="js/Config.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/TextureStash.js"></script>
-    <script src="js/World.js"></script>
-    <script src="js/Selector.js"></script>
-    <script src="js/Shirt.js"></script>
-    <script src="js/Rack.js"></script>
-    <script src="js/Interface.js"></script>
+        function run(){
+            var world, inky, pulseOut, lastTime = 0;
+            var renderer = new PIXI.autoDetectRenderer(600, 600, {transparent: true});
 
-    <script src="js/main.js"></script>
+            function createWorld(){
+                var background = new PIXI.extras.TilingSprite(PIXI.loader.resources['background.png'].texture);
+                world = new PIXI.Container();
+                background.width = 600; background.height = 600;
+                world.addChild(background);
+            }
+
+            function createInky(){
+                inky = new PIXI.Sprite(PIXI.loader.resources['inky.png'].texture);
+                inky.width = 150;    inky.height = 150;
+                inky.anchor.x = 0.5; inky.anchor.y = 0.5;
+                inky.x = 300;        inky.y = 300;
+                world.addChild(inky);
+                window.addEventListener("keydown", function(e){
+                            if(e.keyCode == 37) inky.x -= 10;
+                            else if(e.keyCode == 38) inky.y -= 10;
+                            else if(e.keyCode == 39) inky.x += 10;
+                            else if(e.keyCode == 40) inky.y += 10;
+                }, false);
+            }
+
+            function pulseInky(deltaTime){
+                if(pulseOut){
+                  inky.scale.x += 0.5 * deltaTime;
+                  inky.scale.y += 0.5 * deltaTime;
+                  if(inky.scale.x > 1.10) pulseOut = false;
+                } else{
+                  inky.scale.x -= 0.5 * deltaTime;
+                  inky.scale.y -= 0.5 * deltaTime;
+                  if(inky.scale.x < 0.95) pulseOut = true;
+                }
+            }
+
+            function render(){
+                requestAnimationFrame(render);
+                var now = performance.now();
+                var deltaTime = (now - lastTime) / 1000;
+                lastTime = now;
+                pulseInky(deltaTime);
+                renderer.render(world);
+            }
+
+            document.body.appendChild(renderer.view);
+            createWorld();
+            createInky();
+            render();
+        }
+
+    </script>
 </body>
 </html>
