@@ -8,6 +8,8 @@
       PIXI.loader
         .add("assets/cat.png")
         .add("assets/face.png")
+        .add("assets/cloths.png")
+        .add("assets/screenprinter.png")
         .add("assets/football.png")
         .add("assets/inky.png")
         .add("assets/star.png")

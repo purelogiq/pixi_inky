@@ -35,8 +35,8 @@
     }
 
     function createStations() {
-      shirtRack = new INKY.Station('face.png', 100, 215);
-      printer = new INKY.Station('face.png', INKY.WORLD_WIDTH, INKY.WORLD_HEIGHT);
+      shirtRack = new INKY.Station('cloths.png', 150, 300);
+      printer = new INKY.Station('screenprinter.png', INKY.WORLD_WIDTH - 150, 300);
 
       world.addChild(shirtRack);
       world.addChild(printer);
